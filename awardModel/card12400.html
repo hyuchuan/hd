@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>拼手气红包！</title>
+<link rel="stylesheet" href="https://buyimg.bianxianmao.com/dist/awardModel/css/sm.css">
+<link rel="stylesheet" href="https://buyimg.bianxianmao.com/dist/awardModel/css/swiper.min.css" />
+<link rel="stylesheet" href="https://buyimg.bianxianmao.com/dist/bxm_base/css/pops.css" />
+<link rel="stylesheet" href="https://buyimg.bianxianmao.com/dist/testModel/ggk/ggk.css" />
+<script type="text/javascript" src="https://buyimg.bianxianmao.com/dist/bxm_base/js/return.js"></script>
+<style>
+			.dialog {
+				width: 100%;
+				height: 100%;
+				background-color: #F1F1F1;
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 99999999;
+			}
+			
+			.loading {
+				width: 4rem;
+				height: 4rem;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -2rem;
+				margin-top: -2rem;
+			}
+			
+			.loadstatic {
+				width: 4rem;
+				height: 4rem;
+				background: url(https://buyimg.bianxianmao.com/dist/bxm_base/images/load1.png) no-repeat center;
+				background-size: 100% 100%;
+			}
+			
+			.load {
+				width: 100%;
+				height: 100%;
+				background: url(https://buyimg.bianxianmao.com/dist/bxm_base/images/load2.png) no-repeat center;
+				background-size: 100% 100%;
+				animation: loading 1.5s infinite linear forwards;
+				-webkit-animation: loading 1.5s infinite linear forwards;
+			}
+			
+			.loading p {
+				width: 100%;
+				font-size: 13px;
+				color: #999999;
+				text-align: center;
+				margin-top: 0.3rem;
+			}
+			
+			@keyframes loading {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+			
+			@-webkit-keyframes loading {
+				from {
+					-webkit-transform: rotate(0deg);
+				}
+				to {
+					-webkit-transform: rotate(360deg);
+				}
+			}
+			
+			::-webkit-scrollbar {
+				/*隐藏滚轮*/
+				display: none;
+				background-color: transparent;
+			}
+			
+			#ggk_award .swiper-scrollbar-drag {
+				background-color: {
+					scollerbar
+				}
+				;
+			}
+		</style>
+</head>
+<body onhashchange="_hash()">
+<div class="page-group">
+<div class="page page-current" style="background-color: #fed473;">
+<div class="activity">
+<div class="rule">
+<header><img src="https://buyimg.bianxianmao.com/dist/awardModel/images/top.png" alt="" /></header>
+<div class="rule-main">
+<div id="active">
+<div class="active_header"></div>
+<div class="active_main"><p><!--StartFragment-->参与活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>惊喜一：200元微信红包<br>惊喜二：100元微信红包<br>惊喜三：50元微信红包<br>惊喜四：10元微信红包<br>惊喜五：幸运福袋&nbsp;<br>－－－－－－－－－－－－－－－－&nbsp;<br>重要声明：<br>1.奖品将在活动结束后5-10个工作日安排发放,请耐心等待&nbsp;<br>2.优惠券类奖品的使用规则详见每个优惠券的介绍页&nbsp;<br>3.请兑换后仔细阅读使用流程,如有疑问,可直接联系客服专线:400-630-5186或客服QQ:2923076916(工作日9:00至18:00)&nbsp;<br>4.通过非法途径获得奖品的,主办方有权不提供奖品<!--EndFragment-->&nbsp;&nbsp;<br></p></div>
+</div>
+<div id="important">
+<div class="important_header"></div>
+<div class="mportance_main"></div>
+</div>
+<div id="more">
+<div class="more_header">
+更多概率说明<span class="iconfont collapse">&#xe61a;</span>
+</div>
+<div class="more_main off"><p>中奖概率说明：<br>•200元微信红包共5份，中奖概率0.01%; <br>•100元微信红包共50份,中奖概率0.01%; <br>•50元微信红包共500份,中奖概率0.01%;<br>•10元微信红包共1000份,中奖概率0.01%;</p></div>
+</div>
+<div class="close">
+<span class="iconfont">&#xe622;</span>
+</div>
+</div>
+</div>
+</div>
+<div class="ggk_ok">
+<div class="ggk_hb">
+<div class="bg">
+<img src="https://buyimg.bianxianmao.com/dist/bxm_base/images/coin.png" />
+</div>
+<div class="before">
+<img src="https://buyimg.bianxianmao.com/dist/bxm_base/images/hb-down.png" />
+</div>
+<div class="after common">
+<div style="position:relative">
+<img src="https://buyimg.bianxianmao.com/dist/bxm_base/images/hb-up.png" />
+<div class="congratulations common">
+<span class="ct"></span>
+</div>
+</div>
+</div>
+<div class="prize_img">
+<img src="" />
+</div>
+<div class="core"></div>
+<div class="sunshine"></div>
+</div>
+<div class="ggk_quan">
+<div class="quan_header bar bar-nav">
+<h1 class="title"></h1>
+<span class="iconfont pull-right">&#xe649;</span>
+</div>
+<div class="quan_main">
+<img src="" alt="" />
+</div>
+<div class="again">再刮一次试试~</div>
+</div>
+<div class="popShowPrize">
+<span class="closetc iconfont">&#xe649;</span>
+<div class="showPrize-sunshine">
+<img src="https://buyimg.bianxianmao.com/dist/awardModel/images/sunshine.png?x-oss-process=image/resize,m_fill,w_360,h_474,limit_0/auto-orient,0/quality,q_90" />
+</div>
+<div class="showPrize-circle">
+<img src="https://buyimg.bianxianmao.com/dist/awardModel/images/sunshine.png?x-oss-process=image/resize,m_fill,w_360,h_474,limit_0/auto-orient,0/quality,q_90" />
+</div>
+<div class="showPrize-dialog">
+<div class="modal-header">
+<img src="https://buyimg.bianxianmao.com/dist/awardModel/images/winhead.png" alt="" />
+<span class="start"></span>
+<span class="start"></span>
+<span class="start"></span>
+<span class="start"></span>
+</div>
+<div class="modal-body">
+<h3 class="prizecontent"></h3>
+<div class="coupon-wrapper">
+<div class="coupon-image">
+<img src="">
+<div class="sawtooth-up flex flex-hr">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="sawtooth-down flex flex-hr">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<div class="coupon-detail"></div>
+<div class="coupon-date">有效期:<span></span></div>
+</div>
+<div class="body-footer goto"></div>
+</div>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+<span class="ribbon"></span>
+</div>
+</div>
+</div>
+<div class="dialog">
+<div class="loading">
+<div class="loadstatic">
+<div class="load"></div>
+</div>
+<p>努力加载中...</p>
+</div>
+</div>
+<div class="moreAct">
+<a href="javascript:; " data-url="https://buyimg.bianxianmao.com/dist/roomModel/paperroom/paper.html" class="external ">
+<img class="show" src="https://buyimg.bianxianmao.com/dist/ACTIVITY/activity/2017/09/08/108c0a31-8ed9-4af6-afe8-e880ad61158f" alt="" />
+</a>
+</div>
+<div class="main">
+<div id="ggk_header">
+<div class="bannerbg">
+<img src="https://buyimg.bianxianmao.com/dist/ACTIVITY/activity/2017/11/10/b300c3af-23c7-4d9f-b29b-4fe3e55d4bf6" />
+</div>
+<a href="javascript:;" class="myPrize external" style="background-image: url(https://buyimg.bianxianmao.com/dist/ACTIVITY/activity/2017/11/16/8b8fd7f3-74ed-4d15-be8f-ba7454a8a6e2);"></a>
+<div id="way">
+<span class="iconfont">&#xe621;</span>
+<span>规则</span>
+</div>
+</div>
+<section>
+<div id="ggk_main" class="common" style="background-image: url(https://buyimg.bianxianmao.com/dist/ACTIVITY/activity/2017/11/10/111bbc17-c2c0-4ffb-aa63-61beca0b6f89);">
+<div class="ggk_top" style="background-image: url(https://buyimg.bianxianmao.com/dist/ACTIVITY/activity/2017/11/10/3c60a150-21d0-4b7c-971c-f704512a7858);">
+<div class="ggk_inner">
+<div class="ggk_start start-btn" style="background-image: url(https://buyimg.bianxianmao.com/dist/ACTIVITY/activity/2017/09/06/ac0bd251-59e9-4e0a-a0f4-a0a4c488d676);">
+<span>开始刮奖</span>
+<div class="ball-spin-fade-loader">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+<div class="pop-guide">
+<span class="pop-circle"></span>
+<span class="pop-hand"></span>
+</div>
+<span id="counts">今天还有<i id="time"></i>次刮奖机会</span>
+</div>
+</div>
+<div class="ggk_bottom">
+<div class="ggk_end common">
+<div class="ggk_open">
+<img src="" alt="" />
+</div>
+<span></span>
+</div>
+</div>
+<div class="guideTitle">
+<img id="drawImg" src="https://buyimg.bianxianmao.com/dist/awardModel/images/graybg.png" />
+<div class="cl-group">
+<canvas id="c1" class="canvas"></canvas>
+<div class="titles">
+<div class="word smile"></div>
+<div class="word kuai"></div>
+<div class="word gua"></div>
+<div class="word wo"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div id="ggk_award" style="background-color: #ff7521;">
+<div class="award_header">
+<img src="https://buyimg.bianxianmao.com/dist/ACTIVITY/activity/2017/09/25/171df85c-28aa-4603-907e-b03c49391684" alt="" />
+</div>
+<div class="award_list">
+<div class="swiper-container awdlist">
+<div class="swiper-wrapper">
+<div class="swiper-slide"><span style="border-color:#b55013"><img src="https://buyimg.bianxianmao.com/dist/ACTIVITY/prize/2017/11/10/db92f5d1-02b7-42d3-b648-3eaaaf087307" alt="" /></span><span style="color:#fffff">200元微信红包</span></div>
+<div class="swiper-slide"><span style="border-color:#b55013"><img src="https://buyimg.bianxianmao.com/dist/ACTIVITY/prize/2017/11/10/0aa0a9ad-d596-4409-be76-d46f426e4803" alt="" /></span><span style="color:#fffff">100元微信红包</span></div>
+<div class="swiper-slide"><span style="border-color:#b55013"><img src="https://buyimg.bianxianmao.com/dist/ACTIVITY/prize/2017/11/10/32a72c6e-da76-4cea-ba51-a4b4861c75e3" alt="" /></span><span style="color:#fffff">50元微信红包</span></div>
+<div class="swiper-slide"><span style="border-color:#b55013"><img src="https://buyimg.bianxianmao.com/dist/ACTIVITY/prize/2017/11/10/bafb2c76-167b-4152-9bb1-c00476b8b2e7" alt="" /></span><span style="color:#fffff">10元微信红包</span></div>
+<div class="swiper-slide"><span style="border-color:#b55013"><img src="https://buyimg.bianxianmao.com/dist/ACTIVITY/prize/2017/11/10/4eed3acd-c835-4146-9279-9579cf3b2ece" alt="" /></span><span style="color:#fffff">幸运福袋</span></div>
+
+</div>
+<div class="swiper-scrollbar"></div>
+</div>
+</div>
+</div>
+<div class="bottomTip" style="background-color: #fed473;color:#fffff">
+兑奖项与活动均与设备生产商Apple Inc.无关
+</div>
+</div>
+</div>
+</div>
+<script type='text/javascript' src='https://buyimg.bianxianmao.com/dist/awardModel/js/zepto.min%20.js'></script>
+<script src="https://buyimg.bianxianmao.com/dist/awardModel/js/jqueryfly.min.js"></script>
+<!--[if lte IE 9]>
+		<script src="https://buyimg.bianxianmao.com/dist/awardModel/js/requestAnimationFrame.js"></script>
+		<![endif]-->
+<script src="https://buyimg.bianxianmao.com/dist/awardModel/js/swiper.min.js"></script>
+<script type="text/javascript" src="https://buyimg.bianxianmao.com/dist/bxm_base/js/base.js"></script>
+<script type="text/javascript" src="https://buyimg.bianxianmao.com/dist/bxm_base/js/layer.js?v=20170801"></script>
+<script src="https://buyimg.bianxianmao.com/dist/testModel/ggk/ggk.js?v=20170926"></script>
+<script>
+			baseJs._setRem();
+			setInterval(function() {
+				if(document.readyState === 'complete') {
+					$(".dialog").hide()
+				} else if(document.readyState === 'loading') {
+					$(".dialog").show();
+				}
+			}, 100);
+		</script>
+</body>
+</html>

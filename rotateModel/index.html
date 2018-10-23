@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<meta https-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title></title>
+	<script type="text/javascript" src="/dist/bxm_base/js/zepto.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/dist/bxm_base/js/return.js"></script>
+	<script src="./js/vue.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="./css/loading.css" type="text/css"/>
+	<link rel="stylesheet" href="./css/Popup.css" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/floatModel/float/css/float.css">
+	<link rel="stylesheet" href="/dist/bxm_base/css/pops.css">
+	<link rel="stylesheet" href="/dist/dialogModel/css/dialog.css" />
+	<link rel="stylesheet" href="./css/style.css?v=20170810"  type="text/css">
+	<script type="text/javascript" src="/dist/floatModel/float/js/floatModel.js"></script>
+	<!--<script src="./js/floatModel.js"></script>-->
+</head>
+<style>
+	[v-cloak]{
+		display: none;
+	}
+</style>
+<body onhashchange="_hash()" style="background-color: rgb(57, 170, 240);" v-cloak>
+<div class="page-group">
+	<div class="box"></div>
+	<div class="page page-current page-index">
+		<!--loading 状态图-->
+		<div class="dialog" v-if="isLoading">
+			<div class="loading">
+				<div class="loadstatic">
+					<div class="load"></div>
+				</div>
+				<p v-html="loadingDesc"></p>
+			</div>
+		</div>
+		<div class="page-main">
+			<div id="way" @click="_showRulePanel()">
+				<span class="iconfont">&#xe621;</span>
+				<span>规则</span>
+			</div>
+			<span class="m-prize-btn" @click="_myprize($event)">
+				<a href="javascript:;">
+					<img :src="activityParams.myaward" alt="我的奖品"/>
+				</a>
+			</span>
+			<!--广告图-->
+			<div class="banner" :style="{backgroundImage:'url('+activityParams.banner+')'}">
+				<div class="needtime" id="startBtn" text="1111">
+					<i v-text="'今日免费：'+times+' 次'"></i>
+				</div>
+			</div>
+			<div class="main" :style="{backgroundImage:'url('+activityParams.bodybg+')'}">
+				<div class="wheel" :style="{backgroundImage:'url('+activityParams.turntablebg+')'}">
+					<div class="turnplate">
+						<div class="turnplateborder default" :style="{'background-image':'url('+activityParams.lamp+')'}"></div>
+						<div class="turnplateborder change"></div>
+						<div class="core" :style="{backgroundImage:'url('+activityParams.turntable+')'}">
+							<div class="core-box" id="core-box">
+								<div class="prize" v-for="item in award">
+									<div class="prize-dialog">
+										<p v-text="item.awardname" v-if="$index%2 == 0" :style="{'color':color}"></p>
+										<p v-text="item.awardname" v-else :style="{'color':color1}"></p>
+										<img :src="item.awardimg" alt=""/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="start" :style="{backgroundImage:'url('+btnStatus+')'}" @click="_startWheel($event)">
+						<div class="hand" v-show="showHand">
+							<img :src="activityParams.hand" alt=""/>
+						</div>
+					</div>
+					<!--<div class="moreAct">
+						<a href="javascript:;" class="external" @click="_moreActivity()">
+							<img class="show" :src="activityParams.float" alt=""/>
+						</a>
+					</div>-->
+				</div>
+			</div>
+			<!--规则 start-->
+			<div class="activity" v-show="isShowRulePanel" @click="isShowRulePanel = false"></div>
+			<div class="rule" v-show="isShowRulePanel">
+				<header>
+					<img src="/dist/wheelModel/images/top.png" alt="" />
+				</header>
+				<div class="rule-main">
+					<div id="active">
+						<div class="active_header">
+							<span>活动说明:</span>
+						</div>
+						<div class="active_main" v-html="activityDesc"></div>
+					</div>
+					<div id="more" v-if="otherremark">
+						<div class="more_header" @click="_showMoreProbability()" >
+							更多概率说明<span class="iconfont collapse">&#xe61a;</span>
+						</div>
+						<div class="more_main" v-html="otherRemark" v-show="collapse" transition="off"></div>
+					</div>
+				</div>
+				<div class="close" @click="_hideRulePanel()">
+					<span class="iconfont">&#xe622;</span>
+				</div>
+			</div>
+			<!--规则 end-->
+			<!--未中奖后的面板-->
+			<div class="pop-sorry" v-if="isShowFailedPanel">
+				<div class="sorry">
+					<div class="quan-header bar bar-nav">
+						<h1 class="title">很抱歉您没中奖哦~</h1>
+						<span class="iconfont pull-right closestc">&#xe649;</span>
+					</div>
+					<div class="quan-main">
+						<img src="/dist/wheelModel/images/cry@2x.png" alt="" />
+					</div>
+					<div class="again" @click="_showFailedPanel()">
+						<a href="JavaScript:;" class="external">
+							再来一次！
+						</a>
+					</div>
+				</div>
+			</div>
+			<!--中奖后的第一个面板-->
+			<div class="pop-ok" v-show="showSuccessPanel">
+				<div class="ggk_hb">
+					<div class="bg">
+						<img src="img/coin.png" />
+					</div>
+					<div class="before">
+						<img src="img/hb-down.png" />
+					</div>
+					<div class="after common">
+						<div style="position:relative">
+							<img src="img/hb-up.png" />
+							<div class="congratulations common">
+								<span class="ct" v-text="awardcontent"></span>
+							</div>
+						</div>
+					</div>
+					<div class="prize_img">
+						<img :src="awardimg" />
+					</div>
+					<div class="cr"></div>
+					<div class="sunshine"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="statistical" style="display: none;"></div>
+</body>
+<script type="text/javascript" src="/dist/wheelModel/js/awardRotate.js"></script>
+<script type="text/javascript" src="/dist/bxm_base/js/clcupv.js"></script>
+<script type="text/javascript" src="/dist/bxm_base/js/base.js"></script>
+<script>
+    baseJs._setuid();
+</script>
+<script type="text/javascript" src="/dist/bxm_base/js/layer.js?v=20171205"></script>
+<script type="text/javascript" src="/dist/dialogModel/js/dialog.js"></script>
+<script type="text/javascript" src="./dist/js/wheel.min.js"></script>
+<script>
+    var _mtac = {"performanceMonitor":1,"senseQuery":1};
+    (function() {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500650778");
+        mta.setAttribute("cid", "500650779");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+    })();
+</script>
+<script>
+    baseJs._setRem();
+</script>
+</html>
